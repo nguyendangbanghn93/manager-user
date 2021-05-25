@@ -47,8 +47,8 @@ class Row extends Component {
             <tr>
                 <td>{this.props.stt}</td>
                 <td>{this.state.edit?<input onChange={(e) => { this.changeValue(e) }}name="fullname" type="text" className="w1 pa5 bgcf" defaultValue={this.props.fullname}/>:this.props.fullname}</td>
-                <td>{this.state.edit?<input onChange={(e) => { this.changeValue(e) }} type="text" className="w1 pa5 bgcf" defaultValue={this.props.phoneNumber}/>:this.props.phoneNumber}</td>
-                <td>{this.state.edit ? <select onChange={(e) => { this.changeValue(e) }} className="w1 pa5 bgcf" defaultValue={this.props.role}>
+                <td>{this.state.edit?<input onChange={(e) => { this.changeValue(e) }}name="phoneNumber" type="text" className="w1 pa5 bgcf" defaultValue={this.props.phoneNumber}/>:this.props.phoneNumber}</td>
+                <td>{this.state.edit ? <select onChange={(e) => { this.changeValue(e) }}name="role"  className="w1 pa5 bgcf" defaultValue={this.props.role}>
                     <option value="1">Admin</option>
                     <option value="2">User</option>
                     <option value="3">Khách</option>

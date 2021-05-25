@@ -9,23 +9,34 @@ import { v4 as uuidv4 } from 'uuid';
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: data ,search: false}
+    let local;
+    try {
+      local = JSON.parse(localStorage.getItem("userData"));
+    } catch (error) {
+
+    }
+    this.state = { data: local?local:data ,search: false}
+  }
+  updateLocalStorage = (data) => {
+    localStorage.setItem("userData", JSON.stringify(data));
+    this.setState({data:data});
   }
   addData = (d) => {
     let data = this.state.data;
     d.id =uuidv4();
     data.push(d);
-    this.setState({ data: data })
+    this.updateLocalStorage(data);
   }
   updateData = (d) => {
     let data = this.state.data;
-    data.map(function (v) {
+    console.log(d)
+    data.map(function (v,i) {
       if (v.id === d.id) {
-        v = Object.assign(v, d);
+        Object.assign(data[i], d);
       }
       return true;
     })
-    this.setState({ data: data })
+    this.updateLocalStorage(data);
   }
   deleteData = (i) => {
     let data = this.state.data;
@@ -36,7 +47,7 @@ export default class App extends Component {
       }
       return true;
     })
-    this.setState({ data: data });
+    this.updateLocalStorage(data);
   }
   searchData = (str) => {
     let data = [];
