@@ -1402,11 +1402,9 @@ html.cũ .wbox {
     text-overflow: ellipsis;
     position: relative;
 }
-
 html.cũ .wbox[rows="2"] {
     max-height: 2rem;
 }
-
 html.cũ .wbox[rows="3"] {
     max-height: 3rem;
 }
